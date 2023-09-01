@@ -10,12 +10,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  deploy:
-        runs-on: self-hosted
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
