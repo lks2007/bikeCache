@@ -23,6 +23,10 @@ html, body, #map {
     </style>
 </body>
 </html>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
 <script>
     var map = L.map('map').fitWorld().setView([43.46312540123568, 6.636119686000105], 13);
 

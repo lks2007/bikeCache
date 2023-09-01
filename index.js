@@ -1,19 +1,19 @@
+const express = require('express');
+const app = express();
 const http = require("http");
-const fs = require('fs').promises;
 const { Server } = require("socket.io");
 const io = new Server(server);
 
 const host = 'localhost';
 const port = 8000;
 
-const requestListener = function (req, res) {
-    fs.readFile(__dirname + "/index.html")
-        .then(contents => {
-            res.setHeader("Content-Type", "text/html");
-            res.writeHead(200);
-            res.end(contents);
-        })
-};
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
 
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {
