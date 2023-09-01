@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/lks2007/bikeCache/issues"
   },
-  "homepage": "https://github.com/lks2007/bikeCache#readme"
+  "homepage": "https://github.com/lks2007/bikeCache#readme",
+  "dependencies": {
+    "socket.io": "^4.7.2"
+  }
 }

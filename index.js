@@ -1,5 +1,7 @@
 const http = require("http");
 const fs = require('fs').promises;
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 const host = 'localhost';
 const port = 8000;
