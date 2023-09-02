@@ -34,22 +34,37 @@ html, body, #map {
     var i=0;
     map.locate({setView: true, maxZoom: 19});
     
-    setInterval(() => {
-        i=1;
-        map.locate({setView: false, maxZoom: 19});
-    }, 5000);
-    
+    var marker
+    var round
+    var newLatLng
 
     function onLocationFound(e) {
         if(i==0){
             var radius = e.accuracy;
 
-            L.marker(e.latlng).addTo(map)
+            marker = L.marker(e.latlng).addTo(map)
                 .bindPopup("Lukas").openPopup();
 
-            L.circle(e.latlng, radius).addTo(map);
+
+            round = L.circle(e.latlng, radius).addTo(map);
+            var lat = (e.latlng.lat);
+            var lng = (e.latlng.lng);
+            newLatLng = new L.LatLng(lat, lng);
+        }else{
+            var lat = (e.latlng.lat);
+            var lng = (e.latlng.lng);
+            newLatLng = new L.LatLng(lat, lng);
         }
+
+        console.log(e.latlng.lat)
     }
+    setInterval(() => {
+        i=1;
+        map.locate({setView: false, maxZoom: 19});
+        console.log(newLatLng)
+        marker.setLatLng(newLatLng);
+        round.setLatLng(newLatLng);
+    }, 5000);
 
     map.on('locationfound', onLocationFound);
 
